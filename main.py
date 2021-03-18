@@ -16,17 +16,17 @@ client.remove_command('help')
 @client.event
 async def on_ready():
     print('Online!!!')
-    canal_geral = client.get_channel(821887538481725460)
+    canal_geral = client.get_channel(os.environ.get('DISCORD_CHANNEL_ID'))
     await canal_geral.send('Salve!')
     
 @client.event
 async def on_message(message):
     if message.content.startswith('!ola'):
-        canal_geral = client.get_channel(821887538481725460)
+        canal_geral = client.get_channel(os.environ.get('DISCORD_CHANNEL_ID'))
         await canal_geral.send('ola amigos, bem-vindos ao servidor')
     
     elif message.content.startswith('!wallpaper'):
-        canal_geral = client.get_channel(821887538481725460)
+        canal_geral = client.get_channel(os.environ.get('DISCORD_CHANNEL_ID'))
         
         myEmbed = discord.Embed(title='r/Wallpaper', description='Wallpapers Source', color=0x0099ff, url='https://www.reddit.com/r/wallpaper/')
         myEmbed.add_field(name='Source:', value='reddit', inline=False)
@@ -35,7 +35,7 @@ async def on_message(message):
         await canal_geral.send(embed=myEmbed)
 
     elif message.content.startswith('!commands'):
-        canal_geral = client.get_channel(821887538481725460)
+        canal_geral = client.get_channel(os.environ.get('DISCORD_CHANNEL_ID'))
         myEmbed = discord.Embed(title='Commands', description='Bot Commands', color=0x0099ff)
         myEmbed.add_field(name='How to Trigger Commands:', value='#command', inline=False)
         myEmbed.add_field(name='Top Wallpapers (all time):', value='#topwp', inline=False)
